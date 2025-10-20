@@ -1,0 +1,84 @@
+<ion-toolbar>
+    <ion-title>
+      Nuevo Gasto
+    </ion-title>
+</ion-toolbar>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tab 2</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-header>
+
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-button id="open-modal" expand="block">Nuevo Gasto</ion-button>
+  <p>{{ message }}</p>
+  <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-title>Nuevo Gasto</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-input
+            label="Descripcion"
+            labelPlacement="stacked"
+            type="text"
+            placeholder=" "
+            [(ngModel)]="name"
+          ></ion-input>
+        </ion-item>
+                <ion-item>
+          <ion-input
+            label="Monto"
+            labelPlacement="stacked"
+            type="text"
+            placeholder=" "
+            [(ngModel)]="monto"
+          ></ion-input>
+        </ion-item>
+                <ion-item>
+          <ion-input
+            label="Quien Pago"
+            labelPlacement="stacked"
+            type="text"
+            placeholder=" "
+            [(ngModel)]="miembro"
+          ></ion-input>
+        </ion-item>
+                <ion-item>
+          <ion-input
+            label="Participantes"
+            labelPlacement="stacked"
+            type="text"
+            placeholder=" "
+            [(ngModel)]="participantes"
+          ></ion-input>
+        </ion-item>
+        <ion-item button (click)="addPhotoToGallery()">
+          <div><p>Foto del Recibo</p></div>
+          <ion-icon name="add"></ion-icon>
+
+        </ion-item>
+        <div *ngIf="capturedPhoto" class="ion-padding">
+          <h3>Vista previa del recibo</h3>
+          <ion-img [src]="capturedPhoto.webviewPath"></ion-img>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>
+
+  <!--app-explore-container name="Tab 2 page"></!--app-explore-container-->
+</ion-content>

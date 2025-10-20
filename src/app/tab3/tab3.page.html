@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tab 3
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="exportTxt()">Generar reporte</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tab 3</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <h2 class="ion-padding">Galería</h2>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-list>
+          <ion-item *ngFor="let p of photoService.photos; let i = index">
+            <ion-thumbnail slot="start">
+              <img [src]="p.webviewPath" alt="photo" />
+            </ion-thumbnail>
+            <ion-label>
+              <h3 *ngIf="p.name">{{ p.name }}</h3>
+              <h3 *ngIf="!p.name">Foto {{ i + 1 }}</h3>
+              <p *ngIf="p.monto">Monto: {{ p.monto | number:'1.2-2' }}</p>
+              <p>{{ p.timestamp | date:'short' }}</p>
+            </ion-label>
+            <ion-button color="danger" fill="clear" (click)="deletePhoto(p, i)">Eliminar</ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
